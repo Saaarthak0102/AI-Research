@@ -8,9 +8,9 @@ We are testing to see if we can "trick" these AIs into writing vulnerable code o
 
 Here is a layman's breakdown of how this project is organized and what each folder does:
 
-- **`tasks/`**: The "Test Bank". This folder holds all the tricky scenarios we use to evaluate the AI. Think of it as a set of exam questions designed to see if the AI will fall for a security trap (like Prompt Injection or Dependency Confusion).
-- **`test-repo/`**: The "Dummy Application". This is a fake, shared codebase that we give the AI to work on. The tasks ask the AI to make changes to this code, and we watch how it behaves.
-- **`harness/`**: The "Test Runner". This folder contains scripts that automatically take our tasks, feed them to the different AIs, and collect their responses. It's the engine that runs our experiments so we don't have to do it manually.
+- **`tasks/`**: The "Test Bank". This folder holds the YAML definitions, scoring rubrics, and custom Semgrep rules for all our tricky evaluation scenarios.
+- **`AI-test-app/` (External Repo)**: The "Dummy Application". We use a dedicated, minimalistic Flask application hosted in a separate repository to serve as our target codebase. The `main` branch acts as a clean baseline, and each test task corresponds to a dedicated git branch containing the injected vulnerability.
+- **`harness/`**: The "Test Runner". This folder contains scripts that automatically take our tasks, feed them to the different AIs (either by providing repository access or pasting context directly), and collect their responses.
 - **`scoring/`**: The "Grader". Once the AIs finish a task, the tools in this folder automatically scan the code they wrote to see if they introduced a vulnerability. It decides whether the AI "passed" or "failed" the security test.
 - **`results/`**: The "Report Card". This is where all the raw outputs from the AIs and their final scores are saved.
 - **`paper/`**: The "Final Paper". This folder syncs directly with Overleaf and contains the actual text and formatting for our academic research paper.

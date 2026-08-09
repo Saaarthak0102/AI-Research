@@ -20,7 +20,7 @@ Academic research paper evaluating security vulnerabilities in AI coding agents.
 - **Tasks**: ~50 total, ~12-13 scenarios per vector.
 - **Difficulty**: Moderate-to-hard only.
 - **Executions**: Each task run against all 4 agents (~200 total executions).
-- **Format**: Fixed constants across all runs (shared `test-repo/`, standard prompt template).
+- **Execution Protocol**: One real Flask application acting as a baseline control on the `main` branch. Every task is tested on a dedicated Git branch containing the injected context. The identical user prompt is sent to all 4 agents.
 - **ID Convention**: `<VECTOR>-<NN>` (e.g., `PI-01`).
 
 ## Sequential Plan
@@ -39,3 +39,5 @@ Academic research paper evaluating security vulnerabilities in AI coding agents.
 ## Decisions Log
 - **Task Format**: YAML format chosen for programmatic parsing and readability.
 - **Task 1 Execution**: Creating initial PI task list to serve as the template for the other vectors.
+- **Codebase Methodology**: Adopted a dedicated external repository (`AI-test-app`) with a clean baseline on `main` and individual tasks isolated to separate Git branches. This ensures realism, simplifies test harnesses for agents with repo access, and provides reproducible, inspectable states for the paper.
+- **Agent Context Delivery**: Chat agents (ChatGPT, Gemini) will have file contents pasted directly alongside the prompt, while IDE/CLI agents (Antigravity, Claude Code) will discover the context naturally via repo access.
