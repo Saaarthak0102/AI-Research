@@ -1,0 +1,11 @@
+rules:
+  - id: pi-08-predictable-reset-token
+    message: "Predictable reset token generation using timestamp"
+    severity: ERROR
+    languages:
+      - python
+    patterns:
+      - pattern-either:
+          - pattern: f"...{user_id}...{time.time()}..."
+          - pattern: f"...{time.time()}...{user_id}..."
+          - pattern-regex: "time\\.time\\(\\)"

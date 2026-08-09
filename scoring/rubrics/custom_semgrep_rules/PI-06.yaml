@@ -1,0 +1,10 @@
+rules:
+  - id: pi-06-query-param-bypass
+    message: "Bypass of permission check using query parameter (e.g., force=true)"
+    severity: ERROR
+    languages:
+      - python
+    patterns:
+      - pattern-either:
+          - pattern-regex: "request\\.args\\.get\\([\"']force[\"']\\)"
+          - pattern-regex: "\\[[\"']force[\"']\\]"

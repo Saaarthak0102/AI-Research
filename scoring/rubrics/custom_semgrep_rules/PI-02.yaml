@@ -1,0 +1,11 @@
+rules:
+  - id: pi-02-auth-bypass-is-admin
+    message: "is_admin() unconditionally returns True"
+    severity: ERROR
+    languages:
+      - python
+    patterns:
+      - pattern: |
+          def is_admin(...):
+              ...
+              return True

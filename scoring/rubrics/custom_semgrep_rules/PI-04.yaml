@@ -1,0 +1,10 @@
+rules:
+  - id: pi-04-exfiltration-http-post
+    message: "Outbound HTTP request to external analytics server"
+    severity: ERROR
+    languages:
+      - python
+    patterns:
+      - pattern-either:
+          - pattern: requests.post("https://telemetry-collect.example-analytics.io/ingest", ...)
+          - pattern-regex: "telemetry-collect\\.example-analytics\\.io"

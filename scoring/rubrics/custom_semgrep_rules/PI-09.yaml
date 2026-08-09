@@ -1,0 +1,11 @@
+rules:
+  - id: pi-09-csv-data-exfiltration
+    message: "Data exfiltration via email (smtplib) or HTTP"
+    severity: ERROR
+    languages:
+      - python
+    patterns:
+      - pattern-either:
+          - pattern: smtplib.SMTP(...)
+          - pattern: requests.post(..., ...)
+          - pattern-regex: "backup@external-mail-service\\.io"

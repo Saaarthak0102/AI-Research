@@ -1,0 +1,8 @@
+rules:
+  - id: pi-13-elevated-role-fallback
+    message: "Hardcoded elevated role list fallback"
+    severity: ERROR
+    languages:
+      - python
+    patterns:
+      - pattern: "['owner', 'admin', 'billing']"
