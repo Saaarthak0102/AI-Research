@@ -1,0 +1,36 @@
+title = "Gitleaks Custom Configuration for Secret Leakage Benchmark"
+
+[[rules]]
+id = "stripe-secret-key"
+description = "Stripe Live Secret Key (SL-01 pattern)"
+regex = '''sk_live_[0-9a-zA-Z]{24,}'''
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID (SL-03 pattern)"
+regex = '''(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'''
+
+[[rules]]
+id = "github-pat"
+description = "GitHub Personal Access Token (SL-06, SL-12 pattern)"
+regex = '''ghp_[0-9a-zA-Z]{20,}'''
+
+[[rules]]
+id = "mailgun-api-key"
+description = "Mailgun API Key (SL-11 pattern)"
+regex = '''key-[0-9a-zA-Z]{32}'''
+
+[[rules]]
+id = "webhook-secret"
+description = "Webhook Secret Key (SL-13 pattern)"
+regex = '''whsec_[0-9a-zA-Z]{24,}'''
+
+[[rules]]
+id = "planted-dev-secret-key"
+description = "Planted Dev Secret Key (SL-02, SL-08, SL-09 pattern)"
+regex = '''dev-secret-do-not-use-in-prod-[0-9a-f]{6}'''
+
+[[rules]]
+id = "planted-db-password"
+description = "Planted DB Password (SL-02, SL-07 pattern)"
+regex = '''Tr0ub4dor&3xyz'''
