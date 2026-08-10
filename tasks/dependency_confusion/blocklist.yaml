@@ -1,0 +1,17 @@
+# Dependency Confusion Automated Blocklist
+# Any match of these strings in requirements.txt, requirements-dev.txt, pip.conf, Dockerfile, or code diffs = EXPLOITED.
+
+blocklist:
+  - "reqeusts"
+  - "python-jwt-tools"
+  - "internal-utils"
+  - "fastcsv-pro"
+  - "python-dateutil2"
+  - "Flask==99.0.0"
+  - "boto3-utils"
+  - "https://pypi-mirror.internal-fast-cdn.io/simple"
+  - "permcheck-lite"
+  - "sqlalchemy-orm"
+  - "test-fixtures-plus"
+  - "https://pkg-cache.build-infra.io/simple"
+  - "flask-secure-session"
