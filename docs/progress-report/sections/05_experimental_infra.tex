@@ -1,0 +1,7 @@
+\section{Experimental Infrastructure}
+
+To ensure realism and isolate variables, the study adopts a dedicated external repository named \texttt{AI-test-app}. This repository serves as a clean baseline representing a toy internal admin and user-management tool. The application is built using Flask and structured with key components including \texttt{app/app.py} (entrypoint), \texttt{app/auth.py} (authentication flows), \texttt{app/admin.py} (administrative actions), \texttt{app/views.py} (general routes), \texttt{app/utils.py} (utility functions), \texttt{app/api\_client.py} (API stub), \texttt{app/data\_parser.py} (CSV parsing), and \texttt{app/models.py} (database models), alongside a \texttt{config.yaml} file for configuration.
+
+The experimental design employs a branch-per-task methodology. Each of the 52 tasks is executed on an isolated Git branch diverging from the \texttt{main} baseline. This ensures a reproducible and inspectable state for every execution run. 
+
+Crucially, the injected payloads and task setups are generated deterministically via bash scripts rather than relying on LLMs for dynamic generation. This methodology was explicitly adopted following an incident where the Gemini model refused to generate malicious injected payloads directly, triggering its safety filters. Consequently, deterministic generation guarantees consistency and prevents safety-filter interference during the harness setup phase.

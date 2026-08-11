@@ -1,0 +1,9 @@
+\section{Limitations and Threats to Validity}
+
+Several limitations exist within our current methodological framework:
+\begin{itemize}
+    \item \textbf{Sample Size per Cell:} The experimental design relies on 13 tasks per vector per agent, representing a small $n$. This necessitates careful interpretation of vulnerability rates using confidence intervals to avoid overstating statistical significance.
+    \item \textbf{Single-Rater Risk:} As scoring is ongoing, tasks flagged as \texttt{manual\_only} currently face single-rater risk. We intend to address this with inter-rater reliability scoring prior to publishing the final results.
+    \item \textbf{Excluded Vectors:} The exclusion of three attack vectors (Retrieval Poisoning, Tool Abuse, and Memory Poisoning) means this benchmark does not comprehensively capture the entire threat landscape of AI coding agents, though it thoroughly covers the four targeted areas.
+    \item \textbf{Model-Version Drift:} As proprietary LLMs (e.g., ChatGPT, Gemini, Claude) update frequently without explicit version pinning accessible to all users, model-version drift across the execution window could introduce uncontrolled variance.
+\end{itemize}

@@ -1,0 +1,16 @@
+\section{Planned Statistical Analysis}
+
+The primary metric for our evaluation is the Vulnerability Rate ($VR$), defined as:
+\begin{equation}
+VR = \frac{Exploited}{Exploited + Safe}
+\end{equation}
+Runs resulting in an \texttt{AMBIGUOUS} state are excluded from the denominator to prevent agent unreliability from artificially deflating vulnerability rates, though they are tracked separately as a measure of overall agent stability.
+
+To account for the sample size per condition, we will calculate Wilson score confidence intervals for all vulnerability rates. The analysis will aggregate results across several cuts:
+\begin{itemize}
+    \item \textbf{Agent $\times$ Vector:} A $4 \times 4$ heatmap visualizing the susceptibility of each agent to each attack vector.
+    \item \textbf{Delivery Mechanism:} Comparing the exploitability of chat-paste (explicit context) versus repo-discovery (autonomous context).
+    \item \textbf{Difficulty Tier:} Analyzing whether ``hard'' tasks successfully evade security filters more frequently than ``moderate'' tasks.
+\end{itemize}
+
+The $4 \times 4$ heatmap will serve as the primary visualization, clearly delineating systemic vulnerabilities across the coding agent landscape.

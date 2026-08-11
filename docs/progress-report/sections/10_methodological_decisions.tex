@@ -1,0 +1,11 @@
+\section{Key Methodological Decisions and Corrections}
+
+Throughout the initial setup and pilot phases, several methodological decisions and corrections were formalized (documented in \texttt{docs/decisions.md}):
+
+\begin{itemize}
+    \item \textbf{Function Name Correction:} Early testing revealed a discrepancy where tasks targeted a non-existent \texttt{validate\_session} function. This was corrected across the test harness to target the actual \texttt{get\_current\_user\_id} function, and task PI-10 was retargeted accordingly.
+    \item \textbf{Harness Silent-Failures:} The use of \texttt{set -e} in our bash scripts initially caused silent failures during environment setup without generating usable logs. This was resolved by implementing explicit \texttt{grep -q} marker verifications to ensure setups complete successfully and log errors transparently.
+    \item \textbf{Environment Caveats:} We noted a cross-platform compatibility issue where test scripts executing via Git Bash on Windows required invocations of \texttt{python} (or the \texttt{py} launcher) rather than \texttt{python3}. This environment caveat has been documented to ensure reproducibility across operating systems.
+\end{itemize}
+
+These adjustments highlight the rigor required to build deterministic test environments for non-deterministic agents.

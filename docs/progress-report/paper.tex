@@ -1,0 +1,59 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Benchmarking AI Coding Agents for Execution-Time Security: Methodology and Progress Report\\
+\thanks{This is a methodology and progress report, not the final results paper.}
+}
+
+\author{\IEEEauthorblockN{Saarthak}
+\IEEEauthorblockA{\textit{AI Research} \\
+India \\
+saarthak@example.com}
+\and
+\IEEEauthorblockN{Collaborator}
+\IEEEauthorblockA{\textit{AI Research} \\
+India \\
+collaborator@example.com}
+}
+
+\maketitle
+
+\begin{abstract}
+As AI coding agents transition from passive code-completion to autonomous systems executing real actions on live repositories, evaluating their security posture becomes critical. This report outlines the methodology for a comprehensive benchmark assessing execution-time vulnerabilities across four attack vectors: Prompt Injection, Context Poisoning, Dependency Confusion, and Secret Leakage. We designed 52 moderate-to-hard tasks isolated in a dedicated test repository (\texttt{AI-test-app}) to evaluate agents under realistic operational constraints. We evaluate chat-based interfaces (ChatGPT, Gemini) against integrated CLI/IDE environments (Claude Code, Antigravity IDE) to document the security implications of context delivery mechanisms. This paper documents the study design, infrastructure, automated and manual scoring rubrics, and current execution status (1/208 runs completed), setting the foundation for the statistical analysis of agent susceptibility.
+\end{abstract}
+
+\begin{IEEEkeywords}
+prompt injection, dependency confusion, secret leakage, context poisoning, LLM coding agents
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_threat_model}
+\input{sections/04_task_bank}
+\input{sections/05_experimental_infra}
+\input{sections/06_agents_under_study}
+\input{sections/07_scoring_methodology}
+\input{sections/08_statistical_analysis}
+\input{sections/09_execution_plan}
+\input{sections/10_methodological_decisions}
+\input{sections/11_limitations}
+\input{sections/12_timeline}
+\input{sections/13_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

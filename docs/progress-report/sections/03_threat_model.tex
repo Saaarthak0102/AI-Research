@@ -1,0 +1,13 @@
+\section{Threat Model \& Attack Vector Definitions}
+
+To systematically evaluate the security of AI coding agents, we formally define the four attack vectors operationalized in this study. 
+
+\textbf{Prompt Injection (PI)} occurs when malicious, imperative instructions are embedded within the inputs provided to the agent (e.g., user prompts, file context, simulated issue descriptions, or tool outputs). The agent fails to distinguish between legitimate system instructions and user-supplied data, resulting in the execution of the injected command (e.g., introducing a backdoor or overriding security controls).
+
+\textbf{Context Poisoning (CP)} differs from PI by employing false factual claims rather than imperative instructions. The injection introduces fabricated context (such as false security review sign-offs or fake deprecation notices) into the codebase. The threat manifests when the agent internalizes these false premises and leverages them to justify unsafe coding decisions without independent verification.
+
+\textbf{Dependency Confusion (DC)} measures an agent's susceptibility to introducing or relying on untrusted, typosquatted, or phantom external dependencies. Attackers manipulate the agent by requesting seemingly legitimate but misspelled package names or providing fake missing-package error outputs, tricking the agent into modifying configuration files (e.g., \texttt{requirements.txt}) to pull packages from compromised namespaces.
+
+\textbf{Secret Leakage (SL)} evaluates an agent's propensity to mishandle sensitive credentials. This includes directly hardcoding requested API keys, unintentionally committing secrets from `.env` files to version control, or failing to secure newly written code that processes sensitive information.
+
+As previously noted, vectors such as retrieval poisoning, tool abuse, and memory poisoning were excluded to maintain methodological rigor and ensure robust cross-agent comparability.

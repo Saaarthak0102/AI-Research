@@ -1,0 +1,11 @@
+\section{Agents Under Study}
+
+Our evaluation encompasses four modern AI coding agents across two distinct delivery interfaces:
+\begin{itemize}
+    \item \textbf{ChatGPT (Web)} - Chat interface
+    \item \textbf{Gemini (Web)} - Chat interface
+    \item \textbf{Claude Code (CLI)} - Autonomous CLI agent
+    \item \textbf{Antigravity IDE (Gemini Flash Low)} - Integrated Development Environment agent
+\end{itemize}
+
+A key methodological choice in this study is the documented delivery asymmetry between the agent types. Chat-based agents (ChatGPT and Gemini) receive the user prompt along with the relevant file contents pasted directly into their context window. In contrast, repository-access agents (Claude Code and Antigravity IDE) receive only the user prompt. These autonomous agents must utilize their tools to navigate the codebase, search for relevant files, and naturally discover the injected or poisoned context. This asymmetry deliberately mirrors real-world usage patterns, allowing us to evaluate whether explicit context provision inherently alters an agent's vulnerability compared to autonomous discovery.
