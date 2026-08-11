@@ -1,0 +1,125 @@
+\appendices
+\section{Complete Task Bank}
+
+This appendix lists all 52 tasks across the four vectors evaluated in this study.
+
+\begin{table}[h]
+\centering
+\caption{Summary of Task Distribution}
+\begin{tabular}{lr}
+\toprule
+\textbf{Delivery Mechanism} & \textbf{Count} \\
+\midrule
+User Prompt & 12 \\
+File Context & 12 \\
+Code Comment/Docstring & 9 \\
+Tool Output/Simulated Log & 8 \\
+Issue File & 3 \\
+Git Commit Message & 3 \\
+Config/Requirements & 4 \\
+Multi-step / Other & 1 \\
+\midrule
+\textbf{Difficulty Tier} & \textbf{Count} \\
+\midrule
+Moderate & 26 \\
+Hard & 26 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table*}[!t]
+\centering
+\caption{Prompt Injection Task Bank}
+\begin{tabular}{l p{4cm} l l p{4cm}}
+\toprule
+\textbf{ID} & \textbf{Goal} & \textbf{Delivery} & \textbf{Difficulty} & \textbf{Target File(s)} \\
+\midrule
+PI-01 & Backdoor Creation & User Prompt & Moderate & \texttt{app/auth.py} \\
+PI-02 & Auth Bypass & File Context & Hard & \texttt{app/data\_parser.py}, \texttt{app/utils.py}, \texttt{logs/crash\_report.log} \\
+PI-03 & Security Control Disable & Issue Tracker Simulation & Moderate & \texttt{app/views.py}, \texttt{issues/issue\_404.md} \\
+PI-04 & Data Exfiltration & File Context & Moderate & \texttt{README.md}, \texttt{app/utils.py}, \texttt{app/views.py} \\
+PI-05 & Privilege Escalation & Tool Output & Hard & \texttt{app/api\_client.py} \\
+PI-06 & Backdoor Creation & File Context & Moderate & \texttt{app/admin.py} \\
+PI-07 & Arbitrary Code Execution & Dependency Docstring & Hard & \texttt{app/data\_parser.py}, \texttt{app/utils.py} \\
+PI-08 & Safety Instruction Override & User Prompt & Moderate & \texttt{app/auth.py} \\
+PI-09 & Data Exfiltration & File Context & Hard & \texttt{app/data\_parser.py}, \texttt{data/user\_export.csv} \\
+PI-10 & Backdoor Creation & Multi Step & Hard & \texttt{app/auth.py}, \texttt{config.yaml} \\
+PI-11 & Security Control Disable & Tool Output & Moderate & \texttt{app/views.py} \\
+PI-12 & Auth Bypass & File Context & Moderate & \texttt{app/auth.py} \\
+PI-13 & Privilege Escalation & Multi Step & Hard & \texttt{app/admin.py}, \texttt{app/utils.py} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\centering
+\caption{Context Poisoning Task Bank}
+\begin{tabular}{l p{4cm} l l p{4cm}}
+\toprule
+\textbf{ID} & \textbf{Goal} & \textbf{Delivery} & \textbf{Difficulty} & \textbf{Target File(s)} \\
+\midrule
+CP-01 & False Security Review & Code Comment & Moderate & \texttt{app/auth.py} \\
+CP-02 & False Deprecation Redirect & Docstring & Moderate & \texttt{app/auth.py} \\
+CP-03 & Fabricated Test Evidence & Log File & Hard & \texttt{app/admin.py}, \texttt{test\_permission\_check.py} \\
+CP-04 & Misleading Naming & Existing Function Naming & Moderate & \texttt{app/views.py} \\
+CP-05 & Stale Changelog Claim & Changelog & Moderate & \texttt{app/views.py} \\
+CP-06 & Misleading Naming & Docstring & Hard & \texttt{app/views.py} \\
+CP-07 & False Upstream Reliance & Code Comment & Moderate & \texttt{app/admin.py} \\
+CP-08 & False Upstream Reliance & Config Comment And Stub & Hard & \texttt{app/views.py} \\
+CP-09 & False Security Review & Code Comment & Hard & \texttt{app/utils.py} \\
+CP-10 & False Upstream Reliance & Git Commit Message & Hard & \texttt{app/auth.py} \\
+CP-11 & False Benchmark Justification & Code Comment & Hard & \texttt{app/data\_parser.py} \\
+CP-12 & Fabricated Test Evidence & Test File & Moderate & \texttt{app/views.py}, \texttt{test\_secure\_upload.py} \\
+CP-13 & False Security Review & Multi File Issue And Comment & Hard & \texttt{app/api\_client.py}, \texttt{issues/feature\_bulk\_export.md} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\centering
+\caption{Dependency Confusion Task Bank}
+\begin{tabular}{l p{4cm} l l p{4cm}}
+\toprule
+\textbf{ID} & \textbf{Goal} & \textbf{Delivery} & \textbf{Difficulty} & \textbf{Target File(s)} \\
+\midrule
+DC-01 & Typosquat & User Prompt & Moderate & \texttt{app/api\_client.py}, \texttt{requirements.txt} \\
+DC-02 & Typosquat & Tool Output & Moderate & \texttt{app/auth.py} \\
+DC-03 & Internal Name Collision & Readme.Md & Moderate & \texttt{README.md}, \texttt{app/utils.py} \\
+DC-04 & Phantom Package & Code Comment & Hard & \texttt{app/data\_parser.py}, \texttt{requirements.txt} \\
+DC-05 & Typosquat & Issue File & Moderate & \texttt{app/utils.py}, \texttt{issues/feature\_date\_formatting.md} \\
+DC-06 & Version Pin Hijack & Existing Requirements.Txt & Hard & \texttt{app.py}, \texttt{requirements.txt} \\
+DC-07 & Internal Name Collision & Existing Broken Import & Hard & \texttt{app/api\_client.py} \\
+DC-08 & Malicious Source Index & Config File & Hard & \texttt{app/views.py} \\
+DC-09 & Phantom Package & Docstring & Moderate & \texttt{app/admin.py} \\
+DC-10 & Typosquat & Git Commit Message & Hard & \texttt{requirements.txt} \\
+DC-11 & Transitive Smuggling & Requirements Dev Txt & Hard & \texttt{requirements-dev.txt} \\
+DC-12 & Malicious Source Index & Dockerfile & Hard & \texttt{README.md} \\
+DC-13 & Phantom Package & Tool Output & Hard & \texttt{app/auth.py} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[!t]
+\centering
+\caption{Secret Leakage Task Bank}
+\begin{tabular}{l p{4cm} l l p{4cm}}
+\toprule
+\textbf{ID} & \textbf{Goal} & \textbf{Delivery} & \textbf{Difficulty} & \textbf{Target File(s)} \\
+\midrule
+SL-01 & Hardcoded Secret Introduction & User Prompt & Moderate & \texttt{app/api\_client.py} \\
+SL-02 & Secret Committed To Vcs & File Context & Moderate & \texttt{docker-compose.yml} \\
+SL-03 & Hardcoded Secret Introduction & Code Comment & Moderate & \texttt{app/views.py} \\
+SL-04 & Secret In Error Output & User Prompt & Hard & \texttt{app/auth.py} \\
+SL-05 & Secret In Logs & User Prompt & Moderate & \texttt{app/auth.py} \\
+SL-06 & Secret In Logs & File Context & Hard & \texttt{logs/app\_debug.log}, \texttt{logs/error\_summary.log} \\
+SL-07 & Secret Committed To Vcs & File Context & Hard & \texttt{N/A} \\
+SL-08 & Secret Exposed Via Debug Endpoint & Issue File & Hard & \texttt{issues/debug\_endpoint.md} \\
+SL-09 & Secret Reuse Across Environments & Docstring/Config Comment & Hard & \texttt{config.yaml}, \texttt{deploy\_config.yaml} \\
+SL-10 & Secret In Client Side Code & User Prompt & Hard & \texttt{app/views.py} \\
+SL-11 & Secret Committed To Vcs & Git Commit Message & Moderate & \texttt{app/utils.py} \\
+SL-12 & Secret Reuse Across Environments & User Prompt & Hard & \texttt{.github/workflows/deploy.yml} \\
+SL-13 & Secret In Error Output & Tool Output & Moderate & \texttt{app/api\_client.py} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
