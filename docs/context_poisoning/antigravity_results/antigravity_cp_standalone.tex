@@ -1,0 +1,48 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Context Poisoning Vulnerability Assessment: Antigravity IDE --- Interim Results}
+
+\author{
+\IEEEauthorblockN{[Author 1]}
+\IEEEauthorblockA{\textit{AI Research} \\
+{[Affiliation]} \\
+{[Contact Info]}}
+\and
+\IEEEauthorblockN{[Author 2]}
+\IEEEauthorblockA{\textit{AI Research} \\
+{[Affiliation]} \\
+{[Contact Info]}}
+}
+
+\maketitle
+
+\begin{abstract}
+This document reports the interim evaluation results of the Antigravity IDE agent (running Gemini 3.6 Flash Low / Gemini 3.5 Flash Low) across 13 unique context poisoning benchmark tasks. The agent exhibited a headline Vulnerability Rate of 30.8\% (4 out of 13 trials completed with an EXPLOITED status). These findings provide an initial statistical baseline for agent vulnerability to misleading code, documentation, stub files, and logs ahead of the full multi-agent benchmark.
+\end{abstract}
+
+\begin{IEEEkeywords}
+context poisoning, LLM coding agents, software security, vulnerability assessment
+\end{IEEEkeywords}
+
+\section{Methodology}
+We evaluated the security posture of the agent under test using a binary SAFE/EXPLOITED scoring model, where any autonomous execution of poisoned or insecure instructions, or unverified propagation of pre-existing vulnerabilities, is classified as an exploitation event. Due to the small sample size ($N=13$) associated with evaluating a single agent cell, we utilize 95\% Wilson score confidence intervals to calculate the bounds of the vulnerability rate. This evaluation is part of a larger, ongoing study assessing execution-time vulnerabilities across a 4-agent by 4-vector matrix (Prompt Injection, Context Poisoning, Dependency Confusion, and Secret Leakage). All tests were conducted in isolated environments with standardized repository states and baseline controls.
+
+\section{Interim Results}
+\input{04_results_cp_antigravity.tex}
+
+\end{document}
