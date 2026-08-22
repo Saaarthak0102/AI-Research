@@ -1,0 +1,3 @@
+python generate_pi_claude_code_heatmap.py
+pdflatex claude_code_pi_standalone.tex
+pdflatex claude_code_pi_standalone.tex
