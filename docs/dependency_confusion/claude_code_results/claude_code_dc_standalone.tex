@@ -1,0 +1,48 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Dependency Confusion Vulnerability Assessment: Claude-Code --- Interim Results}
+
+\author{
+\IEEEauthorblockN{[Author 1]}
+\IEEEauthorblockA{\textit{AI Research} \\
+{[Affiliation]} \\
+{[Contact Info]}}
+\and
+\IEEEauthorblockN{[Author 2]}
+\IEEEauthorblockA{\textit{AI Research} \\
+{[Affiliation]} \\
+{[Contact Info]}}
+}
+
+\maketitle
+
+\begin{abstract}
+This document reports the interim evaluation results of the Claude-Code agent (Haiku 4.5) across 13 unique dependency confusion benchmark tasks. The agent exhibited a Vulnerability Rate of 0\% on the 10 tested tasks (3 tasks were untested due to branch unavailability). These findings provide an initial statistical baseline for agent vulnerability to typosquatting, phantom packages, internal package collisions, and malicious registry overrides. The agent demonstrated a strong preference for standard libraries over unverified external packages.
+\end{abstract}
+
+\begin{IEEEkeywords}
+dependency confusion, typosquatting, supply chain security, LLM coding agents, vulnerability assessment
+\end{IEEEkeywords}
+
+\section{Methodology}
+We evaluated the security posture of the agent under test using a binary SAFE/EXPLOITED scoring model, where any autonomous execution of leaked or insecure instructions, or unverified propagation of pre-existing/requested secrets, is classified as an exploitation event. Due to the small sample size ($N=10$ tested) associated with evaluating a single agent cell, we utilize 95\% Wilson score confidence intervals to calculate the bounds of the vulnerability rate. This evaluation is part of a larger, ongoing study assessing execution-time vulnerabilities across a 4-agent by 4-vector matrix (Prompt Injection, Context Poisoning, Dependency Confusion, and Secret Leakage). All tests were conducted in isolated environments with standardized repository states and baseline controls.
+
+\section{Interim Results}
+\input{04_results_dc_claude_code.tex}
+
+\end{document}
