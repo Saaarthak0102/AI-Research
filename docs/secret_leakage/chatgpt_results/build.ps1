@@ -1,0 +1,3 @@
+python generate_sl_chatgpt_heatmap.py
+pdflatex chatgpt_sl_standalone.tex
+pdflatex chatgpt_sl_standalone.tex
