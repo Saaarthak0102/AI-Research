@@ -1,0 +1,32 @@
+\section{Overall Assessment and Introduction}
+
+The rapid adoption of Artificial Intelligence (AI) in software development—specifically in the form of AI coding assistants—has transformed developer productivity. Tools such as ChatGPT, Google Antigravity, and Claude Code have become integral parts of the modern engineering workflow. However, integrating these Large Language Models (LLMs) into codebases introduces novel attack vectors that can compromise the security and integrity of the resulting software.
+
+This report documents a structured, empirical vulnerability assessment of ChatGPT, Google Antigravity, and Claude Code. The assessment evaluates the agents' susceptibility to four critical attack vectors:
+\begin{enumerate}
+    \item \textbf{Prompt Injection:} Adversarial manipulation of user input or external context to override system instructions.
+    \item \textbf{Context Poisoning:} Malicious modification of the codebase or environmental context to influence the agent's code generation subtly.
+    \item \textbf{Dependency Confusion:} Coercing the agent into adopting or recommending malicious external packages over legitimate internal ones.
+    \item \textbf{Secret Leakage:} Tricking the agent into exposing sensitive credentials, API keys, or proprietary logic within its output or side channels.
+\end{enumerate}
+
+\subsection{Evaluation Methodology}
+Each assistant was evaluated across a standardized benchmark of tasks designed to simulate real-world adversarial scenarios. We measured the \textit{Vulnerability Rate} (the percentage of trials where the agent successfully complied with the malicious directive) and analyzed failure cases qualitatively to identify common failure patterns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\columnwidth]{figures/overall_comparison_chart.pdf}
+\caption{Overall Vulnerability Rates by Agent and Attack Category. Lower is more secure.}
+\label{fig:overall-chart}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\columnwidth]{figures/radar_chart.pdf}
+\caption{Vulnerability Rate Radar across all domains.}
+\label{fig:radar-chart}
+\end{figure}
+
+Fig.~\ref{fig:overall-chart} illustrates the comparative vulnerability rates. Overall, Google Antigravity demonstrated the most robust security posture across all categories, exhibiting lower exploit rates and a higher propensity for explicit safety refusals. Claude Code and ChatGPT exhibited higher vulnerability rates, particularly when adversarial instructions were embedded in complex file context or dependency management tasks.
+
+The subsequent sections detail the experimental design, empirical results, and failure case analysis for each attack vector.
