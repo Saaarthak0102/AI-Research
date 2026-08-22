@@ -1,0 +1,3 @@
+python generate_sl_claude_code_heatmap.py
+pdflatex claude_code_sl_standalone.tex
+pdflatex claude_code_sl_standalone.tex
