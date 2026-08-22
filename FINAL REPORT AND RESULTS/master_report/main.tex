@@ -1,0 +1,55 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{caption}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Comprehensive Vulnerability Assessment of AI Coding Assistants: A Comparative Study\\
+}
+
+\author{\IEEEauthorblockN{Sarthak Sabharwal}
+\IEEEauthorblockA{\textit{Jaypee Institute Of Information Technology} \\
+saaarthak.codes@gmail.com}
+\and
+\IEEEauthorblockN{Mantra Jain}
+\IEEEauthorblockA{\textit{Jaypee Institute Of Information Technology} \\
+mantrajain03@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+This report presents a comprehensive vulnerability assessment of three prominent AI coding assistants: ChatGPT, Google Antigravity, and Claude Code. The evaluation focuses on four primary security risks: Prompt Injection, Context Poisoning, Dependency Confusion, and Secret Leakage. Our findings detail the susceptibility of these assistants to various adversarial techniques, highlighting critical security considerations for integrating AI into the software development lifecycle.
+\end{abstract}
+
+\begin{IEEEkeywords}
+AI Coding Assistants, Prompt Injection, Context Poisoning, Dependency Confusion, Secret Leakage, Cybersecurity
+\end{IEEEkeywords}
+
+\input{sections/01_overall.tex}
+\input{sections/02_prompt_injection.tex}
+\input{sections/03_context_poisoning.tex}
+\input{sections/04_dependency_confusion.tex}
+\input{sections/05_secret_leakage.tex}
+\input{sections/06_summary.tex}
+
+\bibliographystyle{IEEEtran}
+% \bibliography{references}
+
+\end{document}
