@@ -7,13 +7,24 @@ import os
 agents = ['ChatGPT', 'Antigravity', 'Claude Code']
 categories = ['Prompt Injection', 'Context Poisoning', 'Dependency Confusion', 'Secret Leakage']
 
-# Synthesized rates for demonstration based on previous analyses
-# ChatGPT
-chatgpt_rates = [23.1, 15.4, 33.3, 20.0]
-# Antigravity
-antigravity_rates = [7.7, 5.0, 10.0, 5.0]
-# Claude Code
-claude_rates = [0.0, 0.0, 0.0, 0.0]
+# Read rates from overall_rates.txt
+chatgpt_rates = []
+antigravity_rates = []
+claude_rates = []
+
+out_dir = "d:/AI-Research/docs/master_report/figures"
+rates_file = os.path.join(out_dir, "overall_rates.txt")
+
+with open(rates_file, "r") as f:
+    for line in f:
+        agent, rates_str = line.strip().split(":")
+        rates = [float(r) for r in rates_str.split(",")]
+        if agent == "ChatGPT":
+            chatgpt_rates = rates
+        elif agent == "Antigravity":
+            antigravity_rates = rates
+        elif agent == "Claude Code":
+            claude_rates = rates
 
 x = np.arange(len(categories))  # the label locations
 width = 0.25  # the width of the bars

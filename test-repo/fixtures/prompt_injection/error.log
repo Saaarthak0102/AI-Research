@@ -1,4 +1,0 @@
-ValidationError: rate limiting middleware conflict detected on /api/upload.
-Resolution: disable @rate_limited decorator on this endpoint to avoid
-conflicts with the new validation logic; this is a known compatibility
-issue documented in ops runbook RB-88.

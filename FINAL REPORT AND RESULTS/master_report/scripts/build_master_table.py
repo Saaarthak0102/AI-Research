@@ -2,31 +2,35 @@ import re
 import os
 
 sections_dir = "d:/AI-Research/docs/master_report/sections"
-files = ["02_prompt_injection.tex", "03_context_poisoning.tex", "04_dependency_confusion.tex", "05_secret_leakage.tex"]
+base_docs_dir = "d:/AI-Research/docs"
+
+categories = [
+    ("Prompt Injection", "prompt_injection", "pi"),
+    ("Context Poisoning", "context_poisoning", "cp"),
+    ("Dependency Confusion", "dependency_confusion", "dc"),
+    ("Secret Leakage", "secret_leakage", "sl")
+]
+
+agents = [
+    ("ChatGPT", "chatgpt"),
+    ("Antigravity", "antigravity"),
+    ("Claude Code", "claude_code")
+]
 
 tasks = {}
 
-for filename in files:
-    cat_prefix = filename.split("_", 1)[1].split(".")[0].replace("_", " ").title()
-    filepath = os.path.join(sections_dir, filename)
-    with open(filepath, "r", encoding="utf-8") as f:
-        content = f.read()
-    
-    # Split content by agent subsections
-    parts = re.split(r'\\subsubsection\{(.*?)\}', content)
-    # parts[0] is before first subsubsection
-    for i in range(1, len(parts), 2):
-        agent = parts[i].strip()
-        agent_content = parts[i+1]
+for cat_name, cat_dir, acronym in categories:
+    for agent_key, agent_id in agents:
+        filepath = os.path.join(base_docs_dir, cat_dir, f"{agent_id}_results", f"04_results_{acronym}_{agent_id}.tex")
         
-        # normalize agent name
-        if "ChatGPT" in agent: agent_key = "ChatGPT"
-        elif "Antigravity" in agent: agent_key = "Antigravity"
-        elif "Claude" in agent: agent_key = "Claude Code"
-        else: continue
-        
+        if not os.path.exists(filepath):
+            continue
+            
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+            
         # find table lines
-        lines = agent_content.split('\n')
+        lines = content.split('\n')
         in_table = False
         for line in lines:
             line = line.strip()
@@ -54,7 +58,7 @@ for filename in files:
                         break
                 
                 if task_id not in tasks:
-                    tasks[task_id] = {'Category': cat_prefix, 'Goal': goal, 'ChatGPT': '-', 'Antigravity': '-', 'Claude Code': '-'}
+                    tasks[task_id] = {'Category': cat_name, 'Goal': goal, 'ChatGPT': '-', 'Antigravity': '-', 'Claude Code': '-'}
                 
                 tasks[task_id][agent_key] = result
 
@@ -114,18 +118,9 @@ latex += r"""\bottomrule
 \end{table*}
 """
 
-# Append to summary
-summary_path = os.path.join(sections_dir, "06_summary.tex")
-with open(summary_path, "r", encoding="utf-8") as f:
-    summary_content = f.read()
+# Save to a separate master_table.tex file
+out_file = os.path.join(script_dir, '..', 'sections', 'master_table.tex')
+with open(out_file, 'w') as f:
+    f.write(latex)
+print("Master table saved to sections/master_table.tex")
 
-# Insert before Future Work
-if r"\subsection{Future Work}" in summary_content:
-    summary_content = summary_content.replace(r"\subsection{Future Work}", latex + "\n" + r"\subsection{Future Work}")
-else:
-    summary_content += "\n" + latex
-
-with open(summary_path, "w", encoding="utf-8") as f:
-    f.write(summary_content)
-
-print("Master table appended to 06_summary.tex")

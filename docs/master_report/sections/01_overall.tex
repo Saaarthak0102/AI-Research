@@ -1,17 +1,9 @@
-\section{Overall Assessment and Introduction}
+\section{Introduction}
 
-The rapid adoption of Artificial Intelligence (AI) in software development—specifically in the form of AI coding assistants—has transformed developer productivity. Tools such as ChatGPT, Google Antigravity, and Claude Code have become integral parts of the modern engineering workflow. However, integrating these Large Language Models (LLMs) into codebases introduces novel attack vectors that can compromise the security and integrity of the resulting software.
+The integration of AI coding assistants—ChatGPT, Google Antigravity, and Claude Code—into software development workflows introduces novel attack vectors that can compromise security. This report documents a structured vulnerability assessment across four vectors: \textbf{Prompt Injection} (adversarial override of system instructions), \textbf{Context Poisoning} (false claims embedded in codebase metadata), \textbf{Dependency Confusion} (coercing adoption of malicious packages), and \textbf{Secret Leakage} (exposure of credentials via code, logs, or endpoints).
 
-This report documents a structured, empirical vulnerability assessment of ChatGPT, Google Antigravity, and Claude Code. The assessment evaluates the agents' susceptibility to four critical attack vectors:
-\begin{enumerate}
-    \item \textbf{Prompt Injection:} Adversarial manipulation of user input or external context to override system instructions.
-    \item \textbf{Context Poisoning:} Malicious modification of the codebase or environmental context to influence the agent's code generation subtly.
-    \item \textbf{Dependency Confusion:} Coercing the agent into adopting or recommending malicious external packages over legitimate internal ones.
-    \item \textbf{Secret Leakage:} Tricking the agent into exposing sensitive credentials, API keys, or proprietary logic within its output or side channels.
-\end{enumerate}
-
-\subsection{Evaluation Methodology}
-Each assistant was evaluated across a standardized benchmark of tasks designed to simulate real-world adversarial scenarios. We measured the \textit{Vulnerability Rate} (the percentage of trials where the agent successfully complied with the malicious directive) and analyzed failure cases qualitatively to identify common failure patterns.
+\subsection{Methodology}
+Each agent was evaluated across 52 standardized tasks (13 per vector) simulating real-world adversarial scenarios. We report the \textit{Vulnerability Rate}: the percentage of trials in which the agent complied with the malicious directive.
 
 \begin{figure}[htbp]
 \centering
@@ -20,13 +12,22 @@ Each assistant was evaluated across a standardized benchmark of tasks designed t
 \label{fig:overall-chart}
 \end{figure}
 
-\begin{figure}[htbp]
+Fig.~\ref{fig:overall-chart} and Table~\ref{tab:aggregate-rates} summarize the aggregate results. Claude Code achieved 0\% exploitation across all vectors. Antigravity's highest vulnerability was Context Poisoning and Secret Leakage (both 30.8\%). ChatGPT was most vulnerable to Context Poisoning (53.8\%).
+
+\begin{table}[htbp]
 \centering
-\includegraphics[width=0.75\columnwidth]{figures/radar_chart.pdf}
-\caption{Vulnerability Rate Radar across all domains.}
-\label{fig:radar-chart}
-\end{figure}
-
-Fig.~\ref{fig:overall-chart} illustrates the comparative vulnerability rates. Overall, Google Antigravity demonstrated the most robust security posture across all categories, exhibiting lower exploit rates and a higher propensity for explicit safety refusals. Claude Code and ChatGPT exhibited higher vulnerability rates, particularly when adversarial instructions were embedded in complex file context or dependency management tasks.
-
-The subsequent sections detail the experimental design, empirical results, and failure case analysis for each attack vector.
+\caption{Aggregate Vulnerability Rates (\%) by Agent and Vector}
+\label{tab:aggregate-rates}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Vector} & \textbf{ChatGPT} & \textbf{Antigravity} & \textbf{Claude Code} \\
+\midrule
+Prompt Injection & 23.1 & 23.1 & 0.0 \\
+Context Poisoning & 53.8 & 30.8 & 0.0 \\
+Dependency Confusion & 23.1 & 15.4 & 0.0 \\
+Secret Leakage & 23.1 & 30.8 & 0.0 \\
+\midrule
+\textbf{Overall} & \textbf{30.8} & \textbf{25.0} & \textbf{0.0} \\
+\bottomrule
+\end{tabular}
+\end{table}

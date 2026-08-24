@@ -6,10 +6,24 @@ import os
 categories = ['Prompt Injection', 'Context Poisoning', 'Dependency Confusion', 'Secret Leakage']
 N = len(categories)
 
-# Rates from the overall chart data
-chatgpt_rates = [23.1, 53.8, 33.3, 20.0]
-antigravity_rates = [23.1, 30.8, 10.0, 5.0]
-claude_rates = [0.0, 0.0, 0.0, 0.0]
+# Read rates from overall_rates.txt
+chatgpt_rates = []
+antigravity_rates = []
+claude_rates = []
+
+out_dir = "d:/AI-Research/docs/master_report/figures"
+rates_file = os.path.join(out_dir, "overall_rates.txt")
+
+with open(rates_file, "r") as f:
+    for line in f:
+        agent, rates_str = line.strip().split(":")
+        rates = [float(r) for r in rates_str.split(",")]
+        if agent == "ChatGPT":
+            chatgpt_rates = rates
+        elif agent == "Antigravity":
+            antigravity_rates = rates
+        elif agent == "Claude Code":
+            claude_rates = rates
 
 # Add the first value to the end to close the circular graph
 chatgpt = chatgpt_rates + [chatgpt_rates[0]]
